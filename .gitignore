@@ -1,0 +1,15 @@
+.DS_Store
+build/
+output/
+Photos/
+private/
+*.app
+*.zip
+*.heic
+*.HEIC
+*.jpg
+*.jpeg
+*.mov
+*.mp4
+**/Assets/*.png
+**/Assets/*.webp
