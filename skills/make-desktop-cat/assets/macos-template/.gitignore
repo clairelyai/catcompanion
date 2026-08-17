@@ -1,0 +1,7 @@
+.DS_Store
+Photos/
+Assets/*.png
+output/
+build/
+*.app
+*.zip
