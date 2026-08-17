@@ -1,0 +1,32 @@
+name: Validate
+
+on:
+  push:
+  pull_request:
+
+permissions:
+  contents: read
+
+jobs:
+  macos:
+    runs-on: macos-latest
+    steps:
+      - name: Check out repository
+        uses: actions/checkout@v4
+
+      - name: Check shell scripts
+        run: bash -n skills/make-desktop-cat/scripts/*.sh
+
+      - name: Check app metadata
+        run: plutil -lint skills/make-desktop-cat/assets/macos-template/Resources/Info.plist
+
+      - name: Type-check the macOS template
+        run: |
+          xcrun swiftc -typecheck \
+            -sdk "$(xcrun --sdk macosx --show-sdk-path)" \
+            -target "$(uname -m)-apple-macosx13.0" \
+            -framework AppKit \
+            skills/make-desktop-cat/assets/macos-template/Sources/CatCompanion/main.swift
+
+      - name: Check privacy boundary
+        run: bash skills/make-desktop-cat/scripts/privacy_check.sh .
