@@ -1,0 +1,4 @@
+interface:
+  display_name: "Make Desktop Cat"
+  short_description: "Build a private macOS pet from cat photos"
+  default_prompt: "Use $make-desktop-cat to turn my cat photos into a private macOS desktop pet."
